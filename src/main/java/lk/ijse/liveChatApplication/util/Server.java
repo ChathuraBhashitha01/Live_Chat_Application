@@ -4,10 +4,9 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.logging.Handler;
 
 public class Server {
-    private static ArrayList<Client> clients = new ArrayList<Client>();
+    private static ArrayList<ClientHandler> clients = new ArrayList<ClientHandler>();
 
     public static void main(String[] args) throws IOException {
 
@@ -21,7 +20,7 @@ public class Server {
             System.out.println("Waiting for Client ...");
             accept = serverSocket.accept();
             System.out.println("Client Connected");
-            Client clientThread = new Client(accept, clients);
+            ClientHandler clientThread = new ClientHandler(accept, clients);
             clients.add(clientThread);
             clientThread.start();
         }

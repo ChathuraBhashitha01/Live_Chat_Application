@@ -4,13 +4,13 @@ import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 
-public class Client extends Thread{
-    private ArrayList<Client> clients;
+public class ClientHandler extends Thread{
+    private ArrayList<ClientHandler> clients;
     private Socket socket;
     private BufferedReader reader;
     private PrintWriter writer;
 
-    public Client(Socket socket, ArrayList<Client> clients) {
+    public ClientHandler(Socket socket, ArrayList<ClientHandler> clients) {
         try {
             this.socket = socket;
             this.clients = clients;
@@ -23,8 +23,6 @@ public class Client extends Thread{
     }
 
     public void run() {
-
-
 
     }
 

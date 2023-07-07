@@ -7,10 +7,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
-
 import java.io.*;
+import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 public class ChatRoomFormController extends Thread{
     public Button btnSend;
@@ -18,18 +18,25 @@ public class ChatRoomFormController extends Thread{
     public Button btnEmoji;
     public AnchorPane emoji_pane;
     public Label lblName;
-    public TextArea txtMsgArea;
     public TextField txtMsg;
     public VBox vBox;
 
     BufferedReader reader;
     PrintWriter writer;
     Socket socket;
-    private FileChooser fileChooser;
-    private File filePath;
 
     public void initialize(){
         lblName.setText(LoginFormController.userName);
+        try {
+            socket = new Socket("localhost",4500);
+            reader=new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            writer=new PrintWriter(socket.getOutputStream(),true);
+
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
     public void btnSendOnAction(ActionEvent actionEvent) {
