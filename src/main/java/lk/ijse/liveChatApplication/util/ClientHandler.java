@@ -24,30 +24,26 @@ public class ClientHandler extends Thread{
 
     public void run() {
 
-            String msg;
-            while (socket.isConnected()) {
-                try {
-                    while (socket.isConnected()) {
-                        msg = reader.readLine();
-                        if(msg !=null) {
-                            for (ClientHandler clientHandler : clients) {
-                                clientHandler.writer.write(msg);
-                            }
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                    break;
-                }finally {
-                    try {
-                        socket.close();
-                        reader.close();
-                        writer.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
+        String msg;
+            try {
+                while (socket.isConnected()) {
+                    msg = reader.readLine();
+                    for (ClientHandler clientHandler : clients) {
+                        clientHandler.writer.println(msg);
                     }
                 }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }finally {
+                try {
+                    socket.close();
+                    reader.close();
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
+
 
     }
 
