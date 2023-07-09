@@ -62,7 +62,7 @@ public class ChatRoomFormController extends Thread{
             String masagefromClients;
             while (true) {
                 masagefromClients=reader.readLine();
-                System.out.println(masagefromClients);
+
 
 
             }
@@ -77,7 +77,9 @@ public class ChatRoomFormController extends Thread{
         writer.println(lblName.getText() + ": " + msg);
 
         txtMsg.clear();
-
+        if(msg.equals("logout")||msg.equals("LOGOUT")){
+            System.exit(0);
+        }
 
     }
 
