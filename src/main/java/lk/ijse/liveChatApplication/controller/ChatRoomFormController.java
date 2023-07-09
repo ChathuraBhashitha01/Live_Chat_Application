@@ -29,6 +29,7 @@ public class ChatRoomFormController extends Thread{
         lblName.setText(LoginFormController.userName);
         try {
             socket = new Socket("localhost",4500);
+            System.out.println(LoginFormController.userName+" Connected with server!");
             reader=new BufferedReader(new InputStreamReader(socket.getInputStream()));
             writer=new PrintWriter(socket.getOutputStream(),true);
 
@@ -39,7 +40,9 @@ public class ChatRoomFormController extends Thread{
         }
 
     }
+
     public void btnSendOnAction(ActionEvent actionEvent) {
+
 
     }
 
