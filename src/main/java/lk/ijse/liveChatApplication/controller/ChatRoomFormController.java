@@ -59,11 +59,21 @@ public class ChatRoomFormController extends Thread{
     @Override
     public void run(){
         try {
-            String masagefromClients;
+            String messagefromClients;
             while (true) {
-                masagefromClients=reader.readLine();
+                messagefromClients=reader.readLine();
+
+                Text text = new Text(messagefromClients);
+
+                HBox hBox = new HBox(10);
+                hBox.setAlignment(Pos.BOTTOM_RIGHT);
+
+                vBox.setAlignment(Pos.TOP_LEFT);
+                hBox.setAlignment(Pos.CENTER_LEFT);
+                hBox.getChildren().add(text);
 
 
+                Platform.runLater(() -> vBox.getChildren().addAll(hBox));
 
             }
 
