@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="631.0" prefWidth="400.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.liveChatApplication.controller.ChatRoomFormController">
+<AnchorPane prefHeight="631.0" prefWidth="400.0" style="-fx-background-color: #deeefa;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.liveChatApplication.controller.ChatRoomFormController">
    <children>
       <ImageView fitHeight="26.0" fitWidth="40.0" layoutX="360.0" layoutY="563.0" pickOnBounds="true" preserveRatio="true">
          <image> 
@@ -131,7 +131,7 @@
             </GridPane>
          </children>
       </AnchorPane>
-      <Label fx:id="lblName" layoutX="75.0" layoutY="29.0" prefHeight="27.0" prefWidth="258.0">
+      <Label fx:id="lblName" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="29.0" prefHeight="27.0" prefWidth="265.0">
          <font>
             <Font size="18.0" />
          </font>

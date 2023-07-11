@@ -78,15 +78,15 @@ public class ChatRoomFormController extends Thread{
                 hBox.setAlignment(Pos.BOTTOM_LEFT);
 
 
-                if(msgsender.equalsIgnoreCase(lblName.getText()+":")) {
-                    vBox.setAlignment(Pos.TOP_LEFT);
-                    hBox.setAlignment(Pos.CENTER_LEFT);
-                    hBox.getChildren().add(text);
-                }else {
-                    vBox.setAlignment(Pos.TOP_LEFT);
-                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
-                    hBox.getChildren().add(text);
-                }
+//                if(msgsender.equalsIgnoreCase(lblName.getText()+":")) {
+//                    vBox.setAlignment(Pos.TOP_LEFT);
+//                    hBox.setAlignment(Pos.CENTER_LEFT);
+//                    hBox.getChildren().add(text);
+//                }else {
+//                    vBox.setAlignment(Pos.TOP_LEFT);
+//                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
+//                    hBox.getChildren().add(text);
+//                }
 
 //                Image image = new Image(file.toURI().toString());
 //
@@ -96,39 +96,38 @@ public class ChatRoomFormController extends Thread{
 //                imageView.setFitWidth(200);
 //                hBox.getChildren().add(imageView);
 
-//                TextFlow txtFlow=new TextFlow();
-//                if(!msgsender.equalsIgnoreCase(lblName.getText()+":")){
-//                    Text txtName=new Text(msgsender+" ");
-//                    txtFlow.getStyleClass().add("txtName");
-//                    //txtFlow.getChildren().add(txtName);
-//
-//                    txtFlow.setStyle("-fx-color: rgb(7, 126, 217);" +
-//                            "-fx-background-color: rgb(222, 238, 250);" +
-//                            " -fx-background-radius: 10px");
-//                    txtFlow.setPadding(new Insets(3,10,3,10));
-//
-//                    txtFlow.getChildren().add(text);
-//                    txtFlow.setMaxWidth(200);
-//
-//                    vBox.setAlignment(Pos.TOP_LEFT);
-//                    hBox.setAlignment(Pos.CENTER_LEFT);
-//                    hBox.setPadding(new Insets(2,5,2,10));
-//                    hBox.getChildren().add(txtFlow);
-//                }else {
-//                    txtFlow.getChildren().add(text);
-//
-//                    txtFlow.setStyle("-fx-color: rgb(239,242,255);" +
-//                            "-fx-background-color: rgb(191,241,9);" +
-//                            "-fx-background-radius: 10px");
-//                    txtFlow.setPadding(new Insets(3,10,3,10));
-//
-//                    txtFlow.setMaxWidth(200);
-//
-//                    vBox.setAlignment(Pos.TOP_RIGHT);
-//                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
-//                    hBox.setPadding(new Insets(2,5,2,10));
-//                    hBox.getChildren().add(txtFlow);
-//                }
+                TextFlow txtFlow=new TextFlow();
+                if(!msgsender.equalsIgnoreCase(lblName.getText()+":")){
+                    Text txtName=new Text(msgsender+" ");
+                    //txtFlow.getChildren().add(txtName);
+
+                    txtFlow.setStyle("-fx-color: rgb(7, 126, 217);" +
+                            "-fx-background-color: rgb(222, 238, 250);" +
+                            " -fx-background-radius: 10px");
+                    txtFlow.setPadding(new Insets(3,10,3,10));
+
+                    txtFlow.getChildren().add(text);
+                    txtFlow.setMaxWidth(200);
+
+                    vBox.setAlignment(Pos.TOP_LEFT);
+                    hBox.setAlignment(Pos.CENTER_LEFT);
+                    hBox.setPadding(new Insets(2,5,2,10));
+                    hBox.getChildren().add(txtFlow);
+                }else {
+                    txtFlow.getChildren().add(text);
+
+                    txtFlow.setStyle("-fx-color: rgb(239,242,255);" +
+                            "-fx-background-color: rgb(222, 238, 250);" +
+                            "-fx-background-radius: 10px");
+                    txtFlow.setPadding(new Insets(3,10,3,10));
+
+                    txtFlow.setMaxWidth(200);
+
+                    vBox.setAlignment(Pos.TOP_RIGHT);
+                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                    hBox.setPadding(new Insets(2,5,2,10));
+                    hBox.getChildren().add(txtFlow);
+                }
                 Platform.runLater(() -> vBox.getChildren().addAll(hBox));
 
             }
