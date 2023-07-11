@@ -162,6 +162,12 @@ public class ChatRoomFormController extends Thread{
     }
 
     public void txtMsgOnAction(ActionEvent actionEvent) {
+        String msg = txtMsg.getText();
+        writer.println(lblName.getText() + ": " + msg);
 
+        txtMsg.clear();
+        if(msg.equals("logout")||msg.equals("LOGOUT")){
+            System.exit(0);
+        }
     }
 }
