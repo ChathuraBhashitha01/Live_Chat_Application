@@ -19,10 +19,14 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.nio.ByteBuffer;
 import java.util.EventObject;
 
 public class ChatRoomFormController extends Thread{
@@ -39,6 +43,7 @@ public class ChatRoomFormController extends Thread{
     Socket socket;
     File filePath;
     EventObject mouseEvent;
+    FileChooser fileChooser;
 
     public void initialize(){
         lblName.setText(LoginFormController.userName);
@@ -66,12 +71,20 @@ public class ChatRoomFormController extends Thread{
                 Text text = new Text(messagefromClients);
 
                 HBox hBox = new HBox(10);
-                hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                hBox.setAlignment(Pos.BOTTOM_LEFT);
 
                 vBox.setAlignment(Pos.TOP_LEFT);
                 hBox.setAlignment(Pos.CENTER_LEFT);
                 hBox.getChildren().add(text);
-
+//
+//                File file = new File(messagefromClients);
+//                Image image = new Image(file.toURI().toString());
+//
+//                ImageView imageView = new ImageView(image);
+//
+//                imageView.setFitHeight(150);
+//                imageView.setFitWidth(200);
+//                hBox.getChildren().add(imageView);
 
                 Platform.runLater(() -> vBox.getChildren().addAll(hBox));
 
@@ -94,6 +107,11 @@ public class ChatRoomFormController extends Thread{
     }
 
     public void btnPhotosOnAction(ActionEvent actionEvent) {
+        Stage stage=(Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Image");
+        this.filePath=fileChooser.showOpenDialog(stage);
+        writer.println(lblName.getText()+" :"+filePath.getPath());
 
     }
 
