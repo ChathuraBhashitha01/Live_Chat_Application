@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="331.0" prefWidth="600.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.liveChatApplication.controller.LoginFormController">
+<AnchorPane prefHeight="331.0" prefWidth="600.0" style="-fx-background-color: #deeefa;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.liveChatApplication.controller.LoginFormController">
    <children>
       <ImageView fitHeight="104.0" fitWidth="130.0" layoutX="248.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@assest/User1.png" />
          </image>
       </ImageView>
-      <TextField fx:id="txtUserName" layoutX="91.0" layoutY="208.0" prefHeight="26.0" prefWidth="325.0" promptText="User Name" />
-      <Button fx:id="btnLogin" layoutX="439.0" layoutY="208.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="27.0" prefWidth="104.0" text="Login " textFill="#d48f11">
+      <TextField fx:id="txtUserName" layoutX="91.0" layoutY="208.0" onAction="#txtUserNameOnAction" opacity="0.5" prefHeight="26.0" prefWidth="325.0" promptText="User Name" />
+      <Button fx:id="btnLogin" layoutX="434.0" layoutY="207.0" mnemonicParsing="false" onAction="#btnLoginOnAction" prefHeight="27.0" prefWidth="104.0" style="-fx-background-color: #d48f11;" text="Login " textFill="#38350e">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

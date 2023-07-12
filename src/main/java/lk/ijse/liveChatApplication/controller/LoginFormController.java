@@ -25,4 +25,14 @@ public class LoginFormController {
         stage.show();
 
     }
+
+    public void txtUserNameOnAction(ActionEvent actionEvent) throws IOException {
+        userName=txtUserName.getText();
+        txtUserName.clear();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/chat_room_form.fxml"))));
+        stage.close();
+        stage.centerOnScreen();
+        stage.show();
+    }
 }

@@ -11,6 +11,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -59,7 +60,7 @@ public class ChatRoomFormController extends Thread{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        emoji_pane.setVisible(true);
     }
     @Override
     public void run(){
@@ -70,7 +71,12 @@ public class ChatRoomFormController extends Thread{
                 String [] clients=messagefromClients.split(" ");
                 String msgsender=clients[0];
 
-
+//                StringBuilder stringBuilder=new StringBuilder();
+//                for (int i = 0; i <clients.length; i++) {
+//                    stringBuilder.append(clients[i]+" ");
+//                }
+//
+//                System.out.println(stringBuilder);
 
                 Text text = new Text(messagefromClients);
 
@@ -97,16 +103,16 @@ public class ChatRoomFormController extends Thread{
 //                hBox.getChildren().add(imageView);
 
                 TextFlow txtFlow=new TextFlow();
-                if(!msgsender.equalsIgnoreCase(lblName.getText()+":")){
-                    Text txtName=new Text(msgsender+" ");
-                    //txtFlow.getChildren().add(txtName);
+                if(!msgsender.equals(lblName.getText()+":")){
+                    //Text txtName=new Text(msgsender+" ");
+                    txtFlow.getChildren().add(text);
 
                     txtFlow.setStyle("-fx-color: rgb(7, 126, 217);" +
                             "-fx-background-color: rgb(222, 238, 250);" +
                             " -fx-background-radius: 10px");
                     txtFlow.setPadding(new Insets(3,10,3,10));
 
-                    txtFlow.getChildren().add(text);
+                    //txtFlow.getChildren().add(text);
                     txtFlow.setMaxWidth(200);
 
                     vBox.setAlignment(Pos.TOP_LEFT);
@@ -153,7 +159,7 @@ public class ChatRoomFormController extends Thread{
         fileChooser = new FileChooser();
         fileChooser.setTitle("Open Image");
         this.filePath=fileChooser.showOpenDialog(stage);
-        writer.println(lblName.getText()+" "+"img"+filePath.getPath());
+        writer.println(lblName.getText()+":"+"img "+filePath.getPath());
 
     }
 
