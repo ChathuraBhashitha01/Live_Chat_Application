@@ -34,7 +34,22 @@
       </ImageView>
       <Button fx:id="btnPhotos" layoutX="323.0" layoutY="564.0" mnemonicParsing="false" onAction="#btnPhotosOnAction" opacity="0.0" prefHeight="26.0" prefWidth="26.0" />
       <Button fx:id="btnEmoji" layoutX="286.0" layoutY="563.0" mnemonicParsing="false" onAction="#btnEmojiOnAction" opacity="0.0" prefHeight="26.0" prefWidth="26.0" />
-      <AnchorPane fx:id="emoji_pane" layoutX="241.0" layoutY="334.0" prefHeight="227.0" prefWidth="163.0" visible="false">
+      <Label fx:id="lblName" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="29.0" prefHeight="27.0" prefWidth="265.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ScrollPane layoutX="12.0" layoutY="74.0">
+         <content>
+            <VBox fx:id="vBox" prefHeight="463.0" prefWidth="386.0" />
+         </content>
+      </ScrollPane>
+      <ImageView fitHeight="42.0" fitWidth="55.0" layoutX="27.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assest/User1.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="emoji_pane" layoutX="241.0" layoutY="334.0" prefHeight="227.0" prefWidth="163.0">
          <children>
             <GridPane layoutY="1.0" prefHeight="229.0" prefWidth="163.0">
               <columnConstraints>
@@ -56,95 +71,80 @@
                         <Image url="@assest/tong_face.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" onMouseClicked="#imoji_1" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@assest/smile_one.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="10.0" layoutY="8.0" onMouseClicked="#imoji_2" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                      <image>
                         <Image url="@assest/smile_two.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="55.0" layoutX="48.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+                  <ImageView fitHeight="40.0" fitWidth="55.0" layoutX="48.0" layoutY="8.0" onMouseClicked="#imoji_3" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                      <image>
                         <Image url="@assest/smile_real.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="87.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="87.0" layoutY="8.0" onMouseClicked="#imoji_4" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                      <image>
                         <Image url="@assest/smile_eye_close.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="48.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                  <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="48.0" layoutY="40.0" onMouseClicked="#imoji_6" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
                      <image>
                         <Image url="@assest/money.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="87.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="87.0" layoutY="40.0" onMouseClicked="#imoji_7" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                      <image>
                         <Image url="@assest/love.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="10.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="10.0" layoutY="73.0" onMouseClicked="#imoji_10" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                      <image>
                         <Image url="@assest/woow.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="38.0" fitWidth="53.0" layoutX="48.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                  <ImageView fitHeight="38.0" fitWidth="53.0" layoutX="48.0" layoutY="73.0" onMouseClicked="#imoji_9" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                      <image>
                         <Image url="@assest/tong_face.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                  <ImageView fitHeight="42.0" fitWidth="41.0" layoutX="10.0" layoutY="8.0" onMouseClicked="#imoji_8" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                      <image>
                         <Image url="@assest/tuinnn.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="10.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="10.0" layoutY="105.0" onMouseClicked="#imoji_11" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                      <image>
                         <Image url="@assest/baww.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="10.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="10.0" layoutY="8.0" onMouseClicked="#imoji_12" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
                      <image>
                         <Image url="@assest/sad_eye_close.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="87.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="87.0" layoutY="105.0" onMouseClicked="#imoji_13" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
                      <image>
                         <Image url="@assest/sad_head.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="10.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="10.0" layoutY="113.0" onMouseClicked="#imoji_14" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <image>
                         <Image url="@assest/sad_one.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="48.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <ImageView fitHeight="36.0" fitWidth="37.0" layoutX="48.0" layoutY="113.0" onMouseClicked="#imoji_15" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
                      <image>
                         <Image url="@assest/blaaaak.png" />
                      </image>
                   </ImageView>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <AnchorPane onMouseClicked="#imoji_5" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
       </AnchorPane>
-      <Label fx:id="lblName" alignment="CENTER" contentDisplay="CENTER" layoutX="75.0" layoutY="29.0" prefHeight="27.0" prefWidth="265.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <ScrollPane layoutX="12.0" layoutY="74.0">
-         <content>
-            <VBox fx:id="vBox" prefHeight="463.0" prefWidth="386.0" />
-         </content>
-      </ScrollPane>
-      <ImageView fitHeight="42.0" fitWidth="55.0" layoutX="27.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@assest/User1.png" />
-         </image>
-      </ImageView>
    </children>
 </AnchorPane>

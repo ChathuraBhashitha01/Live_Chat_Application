@@ -60,82 +60,83 @@ public class ChatRoomFormController extends Thread{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        emoji_pane.setVisible(true);
+        emoji_pane.setVisible(false );
     }
     @Override
     public void run(){
         try {
             String messagefromClients;
             while (socket.isConnected()) {
-                messagefromClients=reader.readLine();
-                String [] clients=messagefromClients.split(" ");
-                String msgsender=clients[0];
+                messagefromClients = reader.readLine();
+                String[] clients = messagefromClients.split(" ");
+                String msgsender = clients[0];
 
-//                StringBuilder stringBuilder=new StringBuilder();
-//                for (int i = 0; i <clients.length; i++) {
-//                    stringBuilder.append(clients[i]+" ");
+//                StringBuilder stringBuilder = new StringBuilder();
+//                for (int i = 0; i < clients.length; i++) {
+//                    stringBuilder.append(clients[i] + " ");
 //                }
-//
-//                System.out.println(stringBuilder);
 
                 Text text = new Text(messagefromClients);
 
-                HBox hBox = new HBox(10);
-                hBox.setAlignment(Pos.BOTTOM_LEFT);
+                    HBox hBox = new HBox(10);
+                    hBox.setAlignment(Pos.BOTTOM_LEFT);
 
+                if (msgsender.equals(lblName.getText()+":img")) {
 
-//                if(msgsender.equalsIgnoreCase(lblName.getText()+":")) {
-//                    vBox.setAlignment(Pos.TOP_LEFT);
-//                    hBox.setAlignment(Pos.CENTER_LEFT);
-//                    hBox.getChildren().add(text);
-//                }else {
-//                    vBox.setAlignment(Pos.TOP_LEFT);
-//                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
-//                    hBox.getChildren().add(text);
-//                }
-
-//                Image image = new Image(file.toURI().toString());
+//                    File file=new File(messagefromClients);
+//                    Image image = new Image(file.toURI().toString());
 //
-//                ImageView imageView = new ImageView(image);
+//                    ImageView imageView = new ImageView(image);
 //
-//                imageView.setFitHeight(150);
-//                imageView.setFitWidth(200);
-//                hBox.getChildren().add(imageView);
+//                    imageView.setFitHeight(150);
+//                    imageView.setFitWidth(200);
+//
+//                    if(!msgsender.equalsIgnoreCase(lblName.getText()+":")) {
+//                        vBox.setAlignment(Pos.TOP_LEFT);
+//                        hBox.setAlignment(Pos.CENTER_LEFT);
+//                        hBox.getChildren().add(imageView);
+//                    }else {
+//                        vBox.setAlignment(Pos.TOP_RIGHT);
+//                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+//                        hBox.getChildren().add(imageView);
+//                    }
+                } else {
 
-                TextFlow txtFlow=new TextFlow();
-                if(!msgsender.equals(lblName.getText()+":")){
-                    //Text txtName=new Text(msgsender+" ");
-                    txtFlow.getChildren().add(text);
+                    TextFlow txtFlow = new TextFlow();
+                    if (!msgsender.equals(lblName.getText() + ":")) {
+//                        Text txtName=new Text(msgsender+" ");
+//                        txtFlow.getChildren().add(txtName);
 
-                    txtFlow.setStyle("-fx-color: rgb(7, 126, 217);" +
-                            "-fx-background-color: rgb(222, 238, 250);" +
-                            " -fx-background-radius: 10px");
-                    txtFlow.setPadding(new Insets(3,10,3,10));
+                        txtFlow.setStyle("-fx-color: rgb(7, 126, 217);" +
+                                "-fx-background-color: rgb(222, 238, 250);" +
+                                " -fx-background-radius: 10px");
+                        txtFlow.setPadding(new Insets(3, 10, 3, 10));
 
-                    //txtFlow.getChildren().add(text);
-                    txtFlow.setMaxWidth(200);
+                        txtFlow.getChildren().add(text);
+                        txtFlow.setMaxWidth(200);
 
-                    vBox.setAlignment(Pos.TOP_LEFT);
-                    hBox.setAlignment(Pos.CENTER_LEFT);
-                    hBox.setPadding(new Insets(2,5,2,10));
-                    hBox.getChildren().add(txtFlow);
-                }else {
-                    txtFlow.getChildren().add(text);
+                        vBox.setAlignment(Pos.TOP_LEFT);
+                        hBox.setAlignment(Pos.CENTER_LEFT);
+                        hBox.setPadding(new Insets(2, 5, 2, 10));
+                        hBox.getChildren().add(txtFlow);
+                    } else {
+                        txtFlow.getChildren().add(text);
 
-                    txtFlow.setStyle("-fx-color: rgb(239,242,255);" +
-                            "-fx-background-color: rgb(222, 238, 250);" +
-                            "-fx-background-radius: 10px");
-                    txtFlow.setPadding(new Insets(3,10,3,10));
+                        txtFlow.setStyle("-fx-color: rgb(239,242,255);" +
+                                "-fx-background-color: rgb(222, 238, 250);" +
+                                "-fx-background-radius: 10px");
+                        txtFlow.setPadding(new Insets(3, 10, 3, 10));
 
-                    txtFlow.setMaxWidth(200);
+                        txtFlow.setMaxWidth(200);
 
-                    vBox.setAlignment(Pos.TOP_RIGHT);
-                    hBox.setAlignment(Pos.BOTTOM_RIGHT);
-                    hBox.setPadding(new Insets(2,5,2,10));
-                    hBox.getChildren().add(txtFlow);
+                        vBox.setAlignment(Pos.TOP_RIGHT);
+                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                        hBox.setPadding(new Insets(2, 5, 2, 10));
+                        hBox.getChildren().add(txtFlow);
+                    }
+                    Platform.runLater(() -> vBox.getChildren().addAll(hBox));
+
                 }
-                Platform.runLater(() -> vBox.getChildren().addAll(hBox));
-
             }
 
         } catch (Exception e) {
@@ -175,5 +176,122 @@ public class ChatRoomFormController extends Thread{
         if(msg.equals("logout")||msg.equals("LOGOUT")){
             System.exit(0);
         }
+    }
+
+    public void imoji_1(MouseEvent mouseEvent) {
+        String emoji = new String(Character.toChars(128546));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+    }
+
+    public void imoji_2(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128513));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+    }
+
+    public void imoji_3(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128514));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_4(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128540));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_6(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(129297));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+    }
+
+    public void imoji_7(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128525));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_10(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128559));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_9(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128539));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_8(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128519));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_11(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128546));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_12(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128554));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_14(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128546));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_13(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128550));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_15(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128560));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
+    }
+
+    public void imoji_5(MouseEvent mouseEvent) {
+        String emoji=new String(Character.toChars(128539));
+        txtMsg.setText(emoji);
+        emoji_pane.setVisible(false);
+
+
     }
 }
