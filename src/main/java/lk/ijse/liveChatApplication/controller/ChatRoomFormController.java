@@ -35,6 +35,8 @@ public class ChatRoomFormController extends Thread{
     public TextField txtMsg;
     public VBox vBox;
     public AnchorPane root;
+    public Button btnExit;
+
 
     BufferedReader reader;
     PrintWriter writer;
@@ -308,5 +310,8 @@ public class ChatRoomFormController extends Thread{
         emoji_pane.setVisible(false);
 
 
+    }
+    public void btnExitOnAction(ActionEvent actionEvent) {
+        System.exit(0);
     }
 }
