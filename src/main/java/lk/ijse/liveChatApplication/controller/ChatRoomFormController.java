@@ -20,14 +20,10 @@ import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-import java.awt.image.BufferedImage;
+import java.awt.*;
 import java.io.*;
-import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.nio.ByteBuffer;
 import java.util.EventObject;
 
 public class ChatRoomFormController extends Thread{
@@ -76,6 +72,13 @@ public class ChatRoomFormController extends Thread{
 //                    stringBuilder.append(clients[i] + " ");
 //                }
 
+                String [] msgToArrray=messagefromClients.split(" ");
+                String msgContent=" ";
+                for (int i = 0; i <msgToArrray.length-1; i++) {
+                    msgContent += msgToArrray[i+1]+" ";
+                }
+
+
                 Text text = new Text(messagefromClients);
 
                     HBox hBox = new HBox(10);
@@ -83,24 +86,39 @@ public class ChatRoomFormController extends Thread{
 
                 if (msgsender.equals(lblName.getText()+":img")) {
 
-//                    File file=new File(messagefromClients);
-//                    Image image = new Image(file.toURI().toString());
-//
-//                    ImageView imageView = new ImageView(image);
-//
-//                    imageView.setFitHeight(150);
-//                    imageView.setFitWidth(200);
-//
-//                    if(!msgsender.equalsIgnoreCase(lblName.getText()+":")) {
-//                        vBox.setAlignment(Pos.TOP_LEFT);
-//                        hBox.setAlignment(Pos.CENTER_LEFT);
-//                        hBox.getChildren().add(imageView);
-//                    }else {
-//                        vBox.setAlignment(Pos.TOP_RIGHT);
-//                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
-//                        hBox.getChildren().add(imageView);
-//                    }
-                } else {
+                    System.out.println(msgContent);
+                    msgContent=msgContent.substring(1,msgContent.length()-1);
+                    System.out.println(msgContent);
+
+                    File file=new File(msgContent);
+                    Image image = new Image(file.toURI().toString());
+
+                    System.out.println(msgContent);
+                    ImageView imageView = new ImageView(image);
+
+                    imageView.setFitHeight(150);
+                    imageView.setFitWidth(200);
+
+                    if(!msgsender.equals(lblName.getText()+":img")) {
+                        vBox.setAlignment(Pos.TOP_LEFT);
+                        hBox.setAlignment(Pos.CENTER_LEFT);
+
+                        Text text1=new Text(" "+msgsender+"  :");
+                        hBox.getChildren().add(text1);
+                        hBox.getChildren().add(imageView);
+                    }
+                    else {
+                        vBox.setAlignment(Pos.TOP_RIGHT);
+                        hBox.setAlignment(Pos.BOTTOM_RIGHT);
+                        Text text1=new Text(" "+msgsender+"  :");
+                        hBox.getChildren().add(text1);
+                        hBox.getChildren().add(imageView);
+
+                    }
+
+                    Platform.runLater(() -> vBox.getChildren().addAll(hBox));
+                }
+                else {
 
                     TextFlow txtFlow = new TextFlow();
                     if (!msgsender.equals(lblName.getText() + ":")) {
@@ -161,6 +179,7 @@ public class ChatRoomFormController extends Thread{
         fileChooser.setTitle("Open Image");
         this.filePath=fileChooser.showOpenDialog(stage);
         writer.println(lblName.getText()+":"+"img "+filePath.getPath());
+
 
     }
 
