@@ -34,6 +34,7 @@ public class ChatRoomFormController extends Thread{
     public Label lblName;
     public TextField txtMsg;
     public VBox vBox;
+    public AnchorPane root;
 
     BufferedReader reader;
     PrintWriter writer;
@@ -67,39 +68,35 @@ public class ChatRoomFormController extends Thread{
                 String[] clients = messagefromClients.split(" ");
                 String msgsender = clients[0];
 
-//                StringBuilder stringBuilder = new StringBuilder();
-//                for (int i = 0; i < clients.length; i++) {
-//                    stringBuilder.append(clients[i] + " ");
-//                }
-
                 String [] msgToArrray=messagefromClients.split(" ");
                 String msgContent=" ";
                 for (int i = 0; i <msgToArrray.length-1; i++) {
                     msgContent += msgToArrray[i+1]+" ";
                 }
+                String firstChars = "";
+                if (msgContent.length() > 1) {
+                    firstChars = msgContent.substring(1, 4);
 
-
+                }
                 Text text = new Text(messagefromClients);
 
                     HBox hBox = new HBox(10);
                     hBox.setAlignment(Pos.BOTTOM_LEFT);
 
-                if (msgsender.equals(lblName.getText()+":img")) {
+                if (firstChars.equals("img")) {
 
-                    System.out.println(msgContent);
-                    msgContent=msgContent.substring(1,msgContent.length()-1);
-                    System.out.println(msgContent);
+                    msgContent=msgContent.substring(4,msgContent.length()-1);
 
                     File file=new File(msgContent);
                     Image image = new Image(file.toURI().toString());
 
-                    System.out.println(msgContent);
+
                     ImageView imageView = new ImageView(image);
 
                     imageView.setFitHeight(150);
                     imageView.setFitWidth(200);
 
-                    if(!msgsender.equals(lblName.getText()+":img")) {
+                    if(!msgsender.equals(lblName.getText()+":")) {
                         vBox.setAlignment(Pos.TOP_LEFT);
                         hBox.setAlignment(Pos.CENTER_LEFT);
 
@@ -122,8 +119,6 @@ public class ChatRoomFormController extends Thread{
 
                     TextFlow txtFlow = new TextFlow();
                     if (!msgsender.equals(lblName.getText() + ":")) {
-//                        Text txtName=new Text(msgsender+" ");
-//                        txtFlow.getChildren().add(txtName);
 
                         txtFlow.setStyle("-fx-color: rgb(7, 126, 217);" +
                                 "-fx-background-color: rgb(222, 238, 250);" +
@@ -169,6 +164,7 @@ public class ChatRoomFormController extends Thread{
         txtMsg.clear();
         if(msg.equals("logout")||msg.equals("LOGOUT")){
             System.exit(0);
+
         }
 
     }
@@ -178,7 +174,7 @@ public class ChatRoomFormController extends Thread{
         fileChooser = new FileChooser();
         fileChooser.setTitle("Open Image");
         this.filePath=fileChooser.showOpenDialog(stage);
-        writer.println(lblName.getText()+":"+"img "+filePath.getPath());
+        writer.println(lblName.getText()+": "+"img"+filePath.getPath());
 
 
     }
